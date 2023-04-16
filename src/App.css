@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;900&display=swap');
+
+* {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  background-color: #3D1860;
+}
+
+.container {
+  width: 100vh;
+}
+
+.title{
+  display: flex;
+  justify-content: center;
+  font-size: 50px;
+  font-weight: 700;
+  color: white;
+}
+
+.add-item {
+  display: flex;  
+  margin-bottom: 1rem;
+  justify-content: space-between;
+}
+
+.input, .priority-input{
+  width: 30rem;
+  height: 3rem;
+  outline: none;
+  border: none;
+}
+
+.priority-input{
+  width: 5rem;
+}
+
+.add-btn{
+  background-color: #643579;
+  border: none;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+}
+
+.wish {
+  background-color: #BB99CD;
+  color: #191d14;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.4%;
+  padding: 2%;
+}
+
+.wish-div1{
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+}
+
+.wish-txt{
+margin-right: 2%;
+}
+
+.icon{
+  cursor: pointer;
+}

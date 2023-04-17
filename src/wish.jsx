@@ -8,7 +8,12 @@ const Wish = (props) => {
     <div className='wish'>
       <div className="wish-div1">
         <div className="wish-txt"><p>{props.item.text}</p></div>
-        <div><span>{props.item.pr}</span></div>
+        <div className="pr-btns">
+        <button onClick={() => props.subPr(props.item.id)}>-</button>
+          <span>{props.item.pr}</span>
+          <button onClick={() => props.addPr(props.item.id)}>+</button>
+          
+          </div>
       </div>
 
       <div >

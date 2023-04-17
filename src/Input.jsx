@@ -7,7 +7,6 @@ const Input = (props) => {
     const [input, setInput] = useState('');
     const [priority, setPriority] = useState();
 
-
     const inputValue = (e) => {
         if (e)
             setInput(e.target.value);
@@ -23,9 +22,7 @@ const Input = (props) => {
             setPriority(0);
     }
 
-
     return (
-
         <>
             <div className='add-item'>
                 <input type={Text} onChange={inputValue} value={input} className='input' placeholder='Enter wishlist item' />
@@ -37,7 +34,6 @@ const Input = (props) => {
                     setPriority(0);
                 }}>Add Wish</button>
             </div>
-
 
         </>
 

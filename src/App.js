@@ -1,11 +1,26 @@
 import './App.css';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Input from './Input'
 import Wish from './wish'
 
 const App = () => {
 
-  const [wishes, setWishes] = useState([]);
+
+  const getWishes=()=>{
+    const a = localStorage.getItem("wish");
+    if(a===[])
+    {
+      return[]
+    }
+    else{
+      return JSON.parse(a);
+    }
+  }
+  const [wishes, setWishes] = useState(getWishes);
+
+  useEffect(()=>{
+    localStorage.setItem("wish", JSON.stringify(wishes))
+  },[wishes])
 
   const addWish = (wish, pr) => {
     let id = 1;
@@ -13,7 +28,6 @@ const App = () => {
       id = wishes.length + 1;
     }
     let w = { id: id, text: wish, pr: pr };
-    //console.log(w);
     setWishes([...wishes, w]);
     console.log(wishes);
   }
@@ -22,6 +36,24 @@ const App = () => {
     let newWishes = [...wishes].filter((w) => w.id !== id)
     setWishes(newWishes)
   }
+
+  const addPr = (id) => {
+    wishes.forEach((item) => {
+      if(item.id === id)
+      {
+        item.pr++;
+        sort();
+      }
+    })}
+  
+    const subPr = (id) => {
+      wishes.forEach((item) => {
+        if(item.id === id && item.pr > 0)
+        {
+          item.pr--;
+          sort();
+        }
+      })}  
 
   const sort = () => {
     let sortedWishes = [...wishes].sort((a, b) => {
@@ -40,14 +72,14 @@ const App = () => {
         <div className='wishes'>
           {wishes.map((item, i) => {
             return (
-              <Wish item={item} key={i} removeWish={removeWish} />
+              <Wish item={item} key={i} removeWish={removeWish} addPr={addPr} subPr={subPr} />
             )
           })}
 
         </div>
-
-
-        <button onClick={sort}>Sort</button>
+          <div className='sort-div'>
+            <button className='sort-btn' onClick={sort}>Sort</button>
+          </div>
       </div>
     </>
 

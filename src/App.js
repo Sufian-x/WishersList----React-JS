@@ -5,15 +5,14 @@ import Wish from './wish'
 
 const App = () => {
 
-
   const getWishes=()=>{
     const a = localStorage.getItem("wish");
-    if(a===[])
+    if(a)
     {
-      return[]
+      return JSON.parse(a);
     }
     else{
-      return JSON.parse(a);
+      return [];
     }
   }
   const [wishes, setWishes] = useState(getWishes);
@@ -35,6 +34,14 @@ const App = () => {
   const removeWish = (id) => {
     let newWishes = [...wishes].filter((w) => w.id !== id)
     setWishes(newWishes)
+  }
+
+  const moveTop = (i)=>{
+    console.log(i)
+    const newWishes = [...wishes];
+    const ind = newWishes.splice(i, 1);
+    newWishes.unshift(ind[0]);
+    setWishes(newWishes);
   }
 
   const addPr = (id) => {
@@ -72,7 +79,7 @@ const App = () => {
         <div className='wishes'>
           {wishes.map((item, i) => {
             return (
-              <Wish item={item} key={i} removeWish={removeWish} addPr={addPr} subPr={subPr} />
+              <Wish item={item} i={i} removeWish={removeWish} moveTop={moveTop} addPr={addPr} subPr={subPr} />
             )
           })}
 
